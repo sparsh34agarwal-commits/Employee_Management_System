@@ -1,32 +1,53 @@
+import { useState } from "react";
 
-
-const Admin_page = () => {
-
+const Admin_page = (props) => {
 
   
   
-  /* ── Dummy assigned tasks ── */
-  const assignedTasks = [
-    { id: 1, title: 'Redesign Landing Page', employee: 'John Doe', category: 'Design', priority: 'high', deadline: '02 Oct 2026', status: 'Active' },
-    { id: 2, title: 'Fix Authentication Bug', employee: 'Sarah Kim', category: 'Development', priority: 'high', deadline: '28 Sep 2026', status: 'Active' },
-    { id: 3, title: 'Write API Documentation', employee: 'Alex Chen', category: 'Documentation', priority: 'medium', deadline: '05 Oct 2026', status: 'Submitted' },
-    { id: 4, title: 'Update Onboarding Flow', employee: 'Emily Park', category: 'UX', priority: 'medium', deadline: '30 Sep 2026', status: 'Active' },
-    { id: 5, title: 'Database Cleanup Script', employee: 'Mike Ross', category: 'Backend', priority: 'low', deadline: '10 Oct 2026', status: 'Accepted' },
-    { id: 6, title: 'Setup CI/CD Pipeline', employee: 'Lisa Wang', category: 'DevOps', priority: 'low', deadline: '25 Sep 2026', status: 'Rejected' },
-    { id: 7, title: 'Mobile Responsive Fixes', employee: 'John Doe', category: 'Frontend', priority: 'high', deadline: '01 Oct 2026', status: 'Submitted' },
-  ]
+  const [employeeData, setEmployeeData] = useState(() => {
+  return JSON.parse(localStorage.getItem("employee")) || [];
+});
+
+const updateTasks=(empID, taskID, updatedstatus)=>{
+  const updatedemp=employeeData.map((employee)=>{
+    if(employee.id===empID){
+      return {
+        ...employee,
+        tasks:(employee.tasks.map((task)=>
+          task.id===taskID ? {...task, status:updatedstatus} : task
+        ))
+      };
+    }
+    else {
+      return employee;
+    }
+  });
+  setEmployeeData(updatedemp);
+  localStorage.setItem("employee", JSON.stringify(updatedemp));
+};
+
+const TotalTasks = employeeData.flatMap((employee) =>
+  employee.tasks.map((task) => ({
+    ...task,
+    employeeName: employee.name,
+    employeeId: employee.id,
+  }))
+);
+console.log(TotalTasks);
+
+
 
   const priorityConfig = {
-    high:   { badge: 'bg-amber-400/10 text-amber-400 border border-amber-400/25', border: 'border-l-amber-400' },
-    medium: { badge: 'bg-blue-400/10 text-blue-400 border border-blue-400/20', border: 'border-l-blue-400' },
-    low:    { badge: 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20', border: 'border-l-emerald-400' },
+    High:   { badge: 'bg-amber-400/10 text-amber-400 border border-amber-400/25', border: 'border-l-amber-400' },
+    Medium: { badge: 'bg-blue-400/10 text-blue-400 border border-blue-400/20', border: 'border-l-blue-400' },
+    Low:    { badge: 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20', border: 'border-l-emerald-400' },
   }
 
   const statusConfig = {
-    Active:    'bg-blue-500/15 text-blue-500',
-    Submitted: 'bg-amber-500/15 text-amber-500',
-    Accepted:  'bg-emerald-500/15 text-emerald-500',
-    Rejected:  'bg-red-500/15 text-red-500',
+    active:    'bg-blue-500/15 text-blue-500',
+    submitted: 'bg-amber-500/15 text-amber-500',
+    accepted:  'bg-emerald-500/15 text-emerald-500',
+    rejected:  'bg-red-500/15 text-red-500',
   }
 
   const employees = ['John Doe', 'Sarah Kim', 'Alex Chen', 'Emily Park', 'Mike Ross', 'Lisa Wang']
@@ -60,12 +81,20 @@ const Admin_page = () => {
       <div className="max-w-[1300px] mx-auto px-10 py-8 pb-16">
 
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-[28px] font-bold text-slate-100 mb-1.5 tracking-tight">
+        <div className="mb-8 flex justify-between">
+          <div>
+            <h1 className="text-[28px] font-bold text-slate-100 mb-1.5 tracking-tight">
             Admin Dashboard 🛡️
           </h1>
           <p className="text-sm text-slate-400/60">Manage and assign tasks to your team.</p>
+          </div>
+          <div className="px-8 py-4">
+            <input onClick={()=>{
+              props.handleLogout();
+            }} className="text-Xl font-medium bg-red-500 p-2 rounded-2xl " type="button" value="LOG OUT" />
+          </div>
         </div>
+
 
         {/* ── Quick Stats Row ── */}
         <div className="grid grid-cols-4 gap-4 mb-9">
@@ -86,7 +115,69 @@ const Admin_page = () => {
         </div>
 
         {/* ── Two Column Layout ── */}
-        <div className="grid grid-cols-2 gap-7">
+        <div className="">
+
+          {/* ═══════ Right: Assigned Tasks Table ═══════ */}
+          <div className="p-8 rounded-[20px] bg-white/[0.025] border border-white/5 backdrop-blur-sm flex flex-col">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-[10px] bg-blue-500/15 flex items-center justify-center text-base">📋</div>
+                <h2 className="text-lg font-semibold text-slate-100">All Assigned Tasks</h2>
+              </div>
+              <span className="text-xs px-3 py-1 rounded-lg bg-indigo-500/12 text-indigo-400 font-semibold">
+                {TotalTasks.length} Tasks
+              </span>
+            </div>
+
+            {/* Task list */}
+            <div className="flex flex-col gap-2.5 flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/[0.08] scrollbar-track-transparent">
+              {TotalTasks.map((task) => {
+                const ps = priorityConfig[task.priority]
+                return (
+                  <div key={`${task.employeeId}-${task.id}`} className={`p-4 px-5 rounded-xl bg-white/[0.02] border border-white/[0.04] border-l-[3px] ${ps.border} transition-all duration-200 hover:bg-white/[0.04]`}>
+                    <div className="flex justify-between items-center mb-2">
+                      <h4 className="text-sm font-semibold text-slate-100">{task.taskTitle}</h4>
+                      <div className="flex gap-1.5">
+                        <span className={`px-2 py-0.5 rounded-[5px] text-[10px] font-semibold uppercase tracking-wider ${ps.badge}`}>
+                          {task.priority}
+                        </span>
+                        <span className={`px-2 py-0.5 rounded-[5px] text-[10px] font-semibold ${statusConfig[task.status]}`}>
+                          {task.status}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex gap-4 items-center">
+                        <span className="text-xs text-slate-400/50 flex items-center gap-1">
+                          👤 {task.employeeName}
+                        </span>
+                        <span className="text-[10px] px-2 py-0.5 rounded-[5px] bg-white/[0.04] text-slate-400/50">
+                          {task.category}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-slate-400/40">⏰ {task.deadline}</span>
+                    </div>
+
+                    {/* Action buttons for Submitted tasks */}
+                    {task.status === 'submitted' && (
+                      <div className="flex gap-2 mt-3 pt-3 border-t border-white/[0.04]">
+                        <button onClick={()=>{
+                          updateTasks(task.employeeId,task.id, "accepted");
+                        }} className="flex-1 py-2 rounded-lg border-none bg-emerald-500/12 text-emerald-500 text-xs font-semibold cursor-pointer transition-all duration-200 hover:bg-emerald-500/20">
+                          ✓ Accept
+                        </button>
+                        <button onClick={()=>{
+                          updateTasks(task.employeeId,task.id, "rejected");
+                        }} className="flex-1 py-2 rounded-lg border-none bg-red-500/12 text-red-500 text-xs font-semibold cursor-pointer transition-all duration-200 hover:bg-red-500/20">
+                          ✗ Reject
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
 
           {/* ═══════ Left: Assign Task Form ═══════ */}
           <div className="p-8 rounded-[20px] bg-white/[0.025] border border-white/5 backdrop-blur-sm">
@@ -95,7 +186,11 @@ const Admin_page = () => {
               <h2 className="text-lg font-semibold text-slate-100">Assign New Task</h2>
             </div>
 
-            <div className="flex flex-col gap-5">
+            <form onSubmit={(e)=>{
+              e.preventDefault();
+              console.log(e);
+              
+            }} className="flex flex-col gap-5">
 
               {/* Title */}
               <div>
@@ -167,66 +262,9 @@ const Admin_page = () => {
               <button className="w-full py-4 rounded-xl border-none bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[15px] font-semibold cursor-pointer shadow-[0_8px_24px_rgba(99,102,241,0.3)] transition-all duration-300 mt-1 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(99,102,241,0.4)] active:translate-y-0">
                 Assign Task →
               </button>
-            </div>
+            </form>
           </div>
 
-          {/* ═══════ Right: Assigned Tasks Table ═══════ */}
-          <div className="p-8 rounded-[20px] bg-white/[0.025] border border-white/5 backdrop-blur-sm flex flex-col">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-[10px] bg-blue-500/15 flex items-center justify-center text-base">📋</div>
-                <h2 className="text-lg font-semibold text-slate-100">All Assigned Tasks</h2>
-              </div>
-              <span className="text-xs px-3 py-1 rounded-lg bg-indigo-500/12 text-indigo-400 font-semibold">
-                {assignedTasks.length} Tasks
-              </span>
-            </div>
-
-            {/* Task list */}
-            <div className="flex flex-col gap-2.5 flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/[0.08] scrollbar-track-transparent">
-              {assignedTasks.map((task) => {
-                const ps = priorityConfig[task.priority]
-                return (
-                  <div key={task.id} className={`p-4 px-5 rounded-xl bg-white/[0.02] border border-white/[0.04] border-l-[3px] ${ps.border} transition-all duration-200 hover:bg-white/[0.04]`}>
-                    <div className="flex justify-between items-center mb-2">
-                      <h4 className="text-sm font-semibold text-slate-100">{task.title}</h4>
-                      <div className="flex gap-1.5">
-                        <span className={`px-2 py-0.5 rounded-[5px] text-[10px] font-semibold uppercase tracking-wider ${ps.badge}`}>
-                          {task.priority}
-                        </span>
-                        <span className={`px-2 py-0.5 rounded-[5px] text-[10px] font-semibold ${statusConfig[task.status]}`}>
-                          {task.status}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex gap-4 items-center">
-                        <span className="text-xs text-slate-400/50 flex items-center gap-1">
-                          👤 {task.employee}
-                        </span>
-                        <span className="text-[10px] px-2 py-0.5 rounded-[5px] bg-white/[0.04] text-slate-400/50">
-                          {task.category}
-                        </span>
-                      </div>
-                      <span className="text-[11px] text-slate-400/40">⏰ {task.deadline}</span>
-                    </div>
-
-                    {/* Action buttons for Submitted tasks */}
-                    {task.status === 'Submitted' && (
-                      <div className="flex gap-2 mt-3 pt-3 border-t border-white/[0.04]">
-                        <button className="flex-1 py-2 rounded-lg border-none bg-emerald-500/12 text-emerald-500 text-xs font-semibold cursor-pointer transition-all duration-200 hover:bg-emerald-500/20">
-                          ✓ Accept
-                        </button>
-                        <button className="flex-1 py-2 rounded-lg border-none bg-red-500/12 text-red-500 text-xs font-semibold cursor-pointer transition-all duration-200 hover:bg-red-500/20">
-                          ✗ Reject
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         </div>
       </div>
     </div>

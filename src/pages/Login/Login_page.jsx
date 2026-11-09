@@ -84,7 +84,7 @@ const Login_page = ({handlelogin}) => {
 
           {/* Sign In Button */}
           <button className="w-full py-4 rounded-xl border-none bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[15px] font-semibold cursor-pointer transition-all duration-300 shadow-[0_8px_24px_rgba(99,102,241,0.3)] tracking-wide mt-2 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(99,102,241,0.4)] active:translate-y-0">
-            Sign In →
+            Sign In → 
           </button>
 
           </form>
