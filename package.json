@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "falling-leaves": "^0.1.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.5",
+    "react-snowfall": "^2.4.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

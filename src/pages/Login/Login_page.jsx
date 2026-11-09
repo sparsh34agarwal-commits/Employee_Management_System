@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+import Snowfall from "react-snowfall";
 
 // ── Inline SVG icons (no emoji, no library needed) ──────────────────
 const IconMail = () => (
@@ -45,7 +47,28 @@ const Login_page = ({handlelogin}) => {
   }
 
   return (
-    <div className="min-h-screen flex font-['Inter',system-ui,sans-serif]" style={{background: 'linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 50%, #e8f4fd 100%)'}}>
+    <div
+      className="min-h-screen flex font-['Inter',system-ui,sans-serif] relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 50%, #e8f4fd 100%)",
+      }}
+    >
+      {/* Snowflake Falling Effect */}
+      <Snowfall
+        color="#7fb2eb"
+        snowflakeCount={320}
+        speed={[0.6, 2.2]}
+        wind={[-0.5, 3.5]}
+        radius={[0.8, 2.5]}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 20,
+          pointerEvents: "none",
+        }}
+      />
 
       {/* Left branding panel */}
       <div className="hidden lg:flex flex-col justify-between w-[45%] bg-blue-700 p-14 relative overflow-hidden animate-fade-in">
