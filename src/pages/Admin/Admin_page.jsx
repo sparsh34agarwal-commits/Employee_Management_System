@@ -318,20 +318,20 @@ if(newpriority===""){
       style={{ color: "#1e293b" }}
     >
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-8 py-3.5 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm animate-fade-in">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-blue-700 flex items-center justify-center font-black text-white text-base">
+      <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm animate-fade-in">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-700 flex items-center justify-center font-black text-white text-sm sm:text-base shrink-0">
             E
           </div>
-          <span className="font-bold text-slate-800 text-[17px] tracking-tight">
+          <span className="font-bold text-slate-800 text-base sm:text-[17px] tracking-tight">
             WorkFlow EMS
           </span>
-          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 font-semibold tracking-wider uppercase ml-1">
+          <span className="text-[10px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 font-semibold tracking-wider uppercase">
             Admin
           </span>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="relative cursor-pointer p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-500">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="relative cursor-pointer p-1.5 sm:p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-500">
             <IconBell />
             {pendingCount > 0 && (
               <div className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-red-500 text-[9px] font-bold flex items-center justify-center text-white">
@@ -339,35 +339,35 @@ if(newpriority===""){
               </div>
             )}
           </div>
-          <div className="w-px h-5 bg-slate-200" />
-          <div className="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center text-xs font-bold text-white">
+          <div className="w-px h-5 bg-slate-200 hidden sm:block" />
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-700 flex items-center justify-center text-xs font-bold text-white shrink-0">
             A
           </div>
-          <span className="text-sm font-medium text-slate-700">Admin</span>
+          <span className="text-sm font-medium text-slate-700 hidden sm:inline">Admin</span>
           <div className="w-px h-5 bg-slate-200" />
           <button
             onClick={() => props.handleLogout()}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-sm font-semibold border border-red-200 hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-red-50 text-red-600 text-xs sm:text-sm font-semibold border border-red-200 hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer"
           >
-            <IconLogout /> Log Out
+            <IconLogout /> <span className="hidden xs:inline sm:inline">Log Out</span>
           </button>
         </div>
       </nav>
 
       {/* Main */}
-      <div className="max-w-[1300px] mx-auto px-8 py-8 pb-20">
+      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-16 sm:pb-20">
         {/* Page header */}
-        <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-2xl font-bold text-slate-800 mb-1">
+        <div className="mb-6 sm:mb-8 animate-fade-in-up">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-800 mb-1">
             Admin Dashboard
           </h1>
-          <p className="text-[#1e293b] text-sm">
+          <p className="text-[#1e293b] text-xs sm:text-sm">
             Manage your team's tasks and assignments.
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {[
             {
               label: "Total Tasks",
@@ -404,18 +404,18 @@ if(newpriority===""){
           ].map((s, i) => (
             <div
               key={s.label}
-              className={`p-5 rounded-2xl bg-white border ${s.border} flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-default animate-fade-in-up stagger-${i + 1}`}
+              className={`p-3.5 sm:p-5 rounded-2xl bg-white border ${s.border} flex items-center gap-3 sm:gap-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-default animate-fade-in-up stagger-${i + 1}`}
             >
               <div
-                className={`w-11 h-11 rounded-xl ${s.bg} ${s.color} flex items-center justify-center border ${s.border} shrink-0`}
+                className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${s.bg} ${s.color} flex items-center justify-center border ${s.border} shrink-0 text-sm sm:text-base`}
               >
                 {s.icon}
               </div>
-              <div>
-                <p className="text-xs text-[#1e293b] uppercase tracking-wider font-medium mb-0.5">
+              <div className="min-w-0">
+                <p className="text-[10px] sm:text-xs text-[#1e293b] uppercase tracking-wider font-medium mb-0.5 truncate">
                   {s.label}
                 </p>
-                <p className={`text-3xl font-bold ${s.color} leading-none`}>
+                <p className={`text-2xl sm:text-3xl font-bold ${s.color} leading-none`}>
                   {s.count}
                 </p>
               </div>
@@ -425,16 +425,18 @@ if(newpriority===""){
 
         {/*filters */}
         <div
-          className="flex items-center justify-between mb-5 animate-fade-in-up"
+          className="flex items-center justify-between mb-5 animate-fade-in-up overflow-x-auto pb-1.5 no-scrollbar"
           style={{ animationDelay: "0.2s" }}
         >
-          <div className="flex items-center gap-2">
-            <IconFilter />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="text-slate-400 shrink-0">
+              <IconFilter />
+            </span>
             {filters.map((f) => (
               <span
                 key={f}
                 onClick={() => setActivefilter(f)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all duration-200 capitalize
+                className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all duration-200 capitalize whitespace-nowrap shrink-0
                   ${
                     f === Activefilter
                       ? "bg-blue-700 text-white shadow-sm"
@@ -448,22 +450,22 @@ if(newpriority===""){
         </div>
 
         {/* Two column layout, assigned tasks list and assign new task */}
-        <div className="grid grid-cols-[1fr_380px] gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6">
           {/* Left: All Tasks */}
           <div
             className="bg-white rounded-2xl border border-slate-200 shadow-sm animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-slate-100">
+              <div className="flex items-center gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shrink-0">
                   <IconClipboard />
                 </div>
-                <h2 className="text-base font-semibold text-slate-800">
+                <h2 className="text-sm sm:text-base font-semibold text-slate-800">
                   All Assigned Tasks
                 </h2>
               </div>
-              <span className="text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">
+              <span className="text-xs px-2.5 sm:px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200 shrink-0">
                 {TotalTasks.length} tasks
               </span>
             </div>
@@ -476,14 +478,14 @@ if(newpriority===""){
                 return (
                   <div
                     key={`${task.employeeId}-${task.id}`}
-                    className={`p-4 px-6 border-b border-slate-100 border-l-4 ${ps.border} hover:bg-slate-50 transition-colors duration-150 animate-fade-in-up`}
+                    className={`p-3.5 sm:p-4 px-4 sm:px-6 border-b border-slate-100 border-l-4 ${ps.border} hover:bg-slate-50 transition-colors duration-150 animate-fade-in-up`}
                     style={{ animationDelay: `${0.04 * idx + 0.3}s` }}
                   >
-                    <div className="flex justify-between items-start mb-1.5">
-                      <h4 className="text-sm font-semibold text-slate-800">
+                    <div className="flex justify-between items-start mb-1.5 gap-2">
+                      <h4 className="text-sm font-semibold text-slate-800 break-words">
                         {task.taskTitle}
                       </h4>
-                      <div className="flex gap-1.5 ml-3 shrink-0">
+                      <div className="flex gap-1.5 shrink-0">
                         <span
                           className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wide ${ps.badge}`}
                         >
@@ -496,8 +498,8 @@ if(newpriority===""){
                         </span>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex gap-3 items-center">
+                    <div className="flex flex-wrap justify-between items-center gap-2">
+                      <div className="flex flex-wrap gap-2 sm:gap-3 items-center">
                         <span className="text-xs text-[#1e293b] flex items-center gap-1">
                           <IconUser /> {task.employeeName}
                         </span>
@@ -541,11 +543,11 @@ if(newpriority===""){
             className="bg-white rounded-2xl border border-slate-200 shadow-sm h-fit animate-slide-in-right"
             style={{ animationDelay: "0.25s" }}
           >
-            <div className="flex items-center gap-2.5 px-6 py-4 border-b border-slate-100">
-              <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center text-white">
+            <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-6 py-4 border-b border-slate-100">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-700 flex items-center justify-center text-white shrink-0">
                 <IconPlus />
               </div>
-              <h2 className="text-base font-semibold text-slate-800">
+              <h2 className="text-sm sm:text-base font-semibold text-slate-800">
                 Assign New Task
               </h2>
             </div>
@@ -554,7 +556,7 @@ if(newpriority===""){
               onSubmit={(e) => {
                 assignhandler(e);
               }}
-              className="flex flex-col gap-4 p-6"
+              className="flex flex-col gap-3.5 sm:gap-4 p-4 sm:p-6"
             >
               <div>
                 <label className="block text-xs font-semibold text-[#1e293b] mb-1.5 uppercase tracking-wide">
@@ -578,7 +580,7 @@ if(newpriority===""){
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-[#1e293b] mb-1.5 uppercase tracking-wide">
                     Assign Date
@@ -593,7 +595,7 @@ if(newpriority===""){
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-[#1e293b] mb-1.5 uppercase tracking-wide">
                     Assign To

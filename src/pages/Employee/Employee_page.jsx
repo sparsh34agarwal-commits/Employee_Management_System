@@ -57,62 +57,90 @@ const Employee_page = (props) => {
     <div className="min-h-screen bg-slate-50 font-['Inter',system-ui,sans-serif]" style={{color:'#1e293b'}}>
 
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-8 py-3.5 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm animate-fade-in">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-blue-700 flex items-center justify-center font-black text-white text-base">E</div>
-          <span className="font-bold text-slate-800 text-[17px] tracking-tight">WorkFlow EMS</span>
-          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold tracking-wider uppercase ml-1">Employee</span>
+      <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm animate-fade-in">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-700 flex items-center justify-center font-black text-white text-sm sm:text-base shrink-0">
+            E
+          </div>
+          <span className="font-bold text-slate-800 text-base sm:text-[17px] tracking-tight">
+            WorkFlow EMS
+          </span>
+          <span className="text-[10px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold tracking-wider uppercase">
+            Employee
+          </span>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-slate-500">Hello, <span className="font-semibold text-slate-700">{sdata.name}</span></span>
-          <div className="w-px h-5 bg-slate-200" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* <span className="text-xs sm:text-sm text-slate-500">
+            <span className="hidden sm:inline">Hello, </span>
+            <span className="font-semibold text-slate-700">{sdata.name}</span>
+          </span>
+          <div className="w-px h-5 bg-slate-200" /> */}
           <button
             onClick={() => props.handleLogout()}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-sm font-semibold border border-red-200 hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-red-50 text-red-600 text-xs sm:text-sm font-semibold border border-red-200 hover:bg-red-600 hover:text-white transition-all duration-200 cursor-pointer"
           >
-            <IconLogout /> Log Out
+            <IconLogout /> <span className="hidden xs:inline sm:inline">Log Out</span>
           </button>
         </div>
       </nav>
 
       {/* Main */}
-      <div className="max-w-[1100px] mx-auto px-8 py-8 pb-20">
-
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-16 sm:pb-20">
         {/* Page header */}
-        <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-2xl font-bold text-slate-800 mb-1">Good day, {sdata.name}</h1>
-          <p className="text-slate-500 text-sm">Here's an overview of your assigned tasks.</p>
+        <div className="mb-6 sm:mb-8 animate-fade-in-up">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-800 mb-1">
+            Hello {sdata.name}
+          </h1>
+          <p className="text-slate-500 text-xs sm:text-sm">
+            Here's an overview of your assigned tasks.
+          </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`p-5 rounded-2xl bg-white border ${s.border} flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-default animate-fade-in-up stagger-${i + 1}`}
+              className={`p-3.5 sm:p-5 rounded-2xl bg-white border ${s.border} flex items-center gap-3 sm:gap-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-default animate-fade-in-up stagger-${i + 1}`}
             >
-              <div className={`w-11 h-11 rounded-xl ${s.bg} ${s.color} flex items-center justify-center border ${s.border} shrink-0`}>{s.icon}</div>
-              <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wider font-medium mb-0.5">{s.label}</p>
-                <p className={`text-3xl font-bold ${s.color} leading-none`}>{s.count}</p>
+              <div
+                className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${s.bg} ${s.color} flex items-center justify-center border ${s.border} shrink-0 text-sm sm:text-base`}
+              >
+                {s.icon}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium mb-0.5 truncate">
+                  {s.label}
+                </p>
+                <p className={`text-2xl sm:text-3xl font-bold ${s.color} leading-none`}>
+                  {s.count}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Section header + filters */}
-        <div className="flex items-center justify-between mb-5 animate-fade-in-up" style={{animationDelay:'0.2s'}}>
-          <h2 className="text-lg font-semibold text-slate-800">Assigned Tasks</h2>
-          <div className="flex items-center gap-2">
-            <IconFilter />
+        <div
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 animate-fade-in-up"
+          style={{ animationDelay: "0.2s" }}
+        >
+          <h2 className="text-base sm:text-lg font-semibold text-slate-800">
+            Assigned Tasks
+          </h2>
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1.5 no-scrollbar w-full sm:w-auto">
+            <span className="text-slate-400 shrink-0">
+              <IconFilter />
+            </span>
             {filters.map((f) => (
               <span
                 key={f}
                 onClick={() => setActivefilter(f)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all duration-200 capitalize
-                  ${f === Activefilter
-                    ? 'bg-blue-700 text-white shadow-sm'
-                    : 'bg-white text-slate-500 border border-slate-200 hover:border-blue-300 hover:text-blue-600'
+                className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all duration-200 capitalize whitespace-nowrap shrink-0
+                  ${
+                    f === Activefilter
+                      ? "bg-blue-700 text-white shadow-sm"
+                      : "bg-white text-slate-500 border border-slate-200 hover:border-blue-300 hover:text-blue-600"
                   }`}
               >
                 {f}
@@ -122,49 +150,62 @@ const Employee_page = (props) => {
         </div>
 
         {/* Task Cards */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 sm:gap-3.5">
           {sdata.tasks.map((task, idx) => {
             const pc = priorityConfig[task.priority];
             if (Activefilter !== "All" && task.status !== Activefilter) return null;
             return (
               <div
                 key={task.id}
-                className={`bg-white rounded-2xl border border-slate-200 border-l-4 ${pc.border} shadow-sm hover:shadow-md transition-all duration-200 p-5 px-6 animate-fade-in-up`}
+                className={`bg-white rounded-2xl border border-slate-200 border-l-4 ${pc.border} shadow-sm hover:shadow-md transition-all duration-200 p-4 sm:p-5 px-4 sm:px-6 animate-fade-in-up`}
                 style={{ animationDelay: `${0.05 * idx + 0.25}s` }}
               >
-                <div className="flex justify-between items-start">
-
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
                   {/* Left */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2.5 mb-2 flex-wrap">
-                      <h3 className="text-sm font-semibold text-slate-800">{task.taskTitle}</h3>
-                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider ${pc.badge}`}>
+                    <div className="flex items-center gap-2 sm:gap-2.5 mb-1.5 sm:mb-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-semibold text-slate-800 break-words">
+                        {task.taskTitle}
+                      </h3>
+                      <span
+                        className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider ${pc.badge}`}
+                      >
                         {task.priority}
                       </span>
-                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-semibold capitalize ${statusConfig[task.status]}`}>
+                      <span
+                        className={`px-2 py-0.5 rounded-md text-[10px] font-semibold capitalize ${statusConfig[task.status]}`}
+                      >
                         {task.status}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 mb-3 leading-relaxed">{task.taskDescription}</p>
-                    <div className="flex gap-4 items-center flex-wrap">
-                      <span className="text-xs text-slate-400 flex items-center gap-1.5"><IconCal /> {task.assignedDate}</span>
-                      <span className="text-xs text-slate-400 flex items-center gap-1.5"><IconClock /> {task.deadline}</span>
-                      <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-1"><IconTag /> {task.category}</span>
+                    <p className="text-xs sm:text-[13px] text-slate-400 mb-3 leading-relaxed">
+                      {task.taskDescription}
+                    </p>
+                    <div className="flex flex-wrap gap-2.5 sm:gap-4 items-center">
+                      <span className="text-xs text-slate-400 flex items-center gap-1.5">
+                        <IconCal /> {task.assignedDate}
+                      </span>
+                      <span className="text-xs text-slate-400 flex items-center gap-1.5">
+                        <IconClock /> {task.deadline}
+                      </span>
+                      <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-1">
+                        <IconTag /> {task.category}
+                      </span>
                     </div>
                   </div>
 
                   {/* Right actions */}
-                  <div className="flex flex-col items-end gap-2 ml-6 shrink-0">
-                    {task.status === 'active' && (
+                  <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2 pt-2.5 sm:pt-0 border-t sm:border-t-0 border-slate-100 shrink-0">
+                    {task.status === "active" && (
                       <button
                         onClick={() => completehandler(task.id, "submitted")}
-                        className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold cursor-pointer transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-md active:translate-y-0 whitespace-nowrap select-none"
+                        className="w-full sm:w-auto px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold cursor-pointer transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-md active:translate-y-0 whitespace-nowrap select-none text-center"
                       >
                         Submit Task
                       </button>
                     )}
-                    {task.status === 'submitted' && (
-                      <>
+                    {task.status === "submitted" && (
+                      <div className="flex items-center sm:flex-col gap-2 w-full sm:w-auto justify-between sm:justify-start">
                         <span className="px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 text-xs font-semibold border border-amber-200 whitespace-nowrap">
                           Awaiting Review
                         </span>
@@ -174,20 +215,19 @@ const Employee_page = (props) => {
                         >
                           Cancel Submit
                         </button>
-                      </>
+                      </div>
                     )}
-                    {task.status === 'accepted' && (
+                    {task.status === "accepted" && (
                       <span className="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200 whitespace-nowrap flex items-center gap-1.5">
-                        Completed
+                        <IconCheck /> Completed
                       </span>
                     )}
-                    {task.status === 'rejected' && (
+                    {task.status === "rejected" && (
                       <span className="px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-xs font-semibold border border-red-200 whitespace-nowrap flex items-center gap-1.5">
                         <IconX /> Rejected
                       </span>
                     )}
                   </div>
-
                 </div>
               </div>
             );
