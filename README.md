@@ -60,7 +60,13 @@ These are intentionally public demo credentials. They are stored in the frontend
 5. The Admin reviews the submission and either accepts or rejects it.
 6. The updated status is reflected in the employee's task list.
 
+## ScreenShots
+
 ![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
 
 ## Tech Stack
 
