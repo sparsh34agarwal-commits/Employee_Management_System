@@ -178,7 +178,7 @@ const Employee_page = (props) => {
                     )}
                     {task.status === 'accepted' && (
                       <span className="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200 whitespace-nowrap flex items-center gap-1.5">
-                        <IconCheck /> Completed
+                        Completed
                       </span>
                     )}
                     {task.status === 'rejected' && (
