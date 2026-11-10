@@ -60,10 +60,6 @@
     5. The Admin reviews the submission and either accepts or rejects it.
     6. The updated status is reflected in the employee's task list.
 
-    ## ScreenShots
-
-    ![alt text](image.png)
-
     ## Tech Stack
 
     - **React** — component-based user interface
