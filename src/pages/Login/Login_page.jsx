@@ -150,9 +150,7 @@ const Login_page = ({handlelogin}) => {
                 <div className="w-4 h-4 rounded border border-slate-300 bg-white" />
                 Remember me
               </label>
-              <span className="text-sm text-blue-600 cursor-pointer font-medium hover:text-blue-700 transition-colors">
-                Forgot password?
-              </span>
+              
             </div>
 
             {/* Sign in */}
