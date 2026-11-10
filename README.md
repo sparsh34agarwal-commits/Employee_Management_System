@@ -1,136 +1,138 @@
-    # WorkFlow EMS — Employee Management System
+# WorkFlow EMS — Employee Management System
 
-    A role-based Employee Management System built with React. The application provides separate dashboards for **Admins** and **Employees**, with a simple task-assignment and task-review workflow.
+A role-based Employee Management System built with React. The application provides separate dashboards for **Admins** and **Employees**, with a simple task-assignment and task-review workflow.
 
-    ## Live Demo
+## Live Demo
 
-    **Website:** [Open WorkFlow EMS](https://ems-sparsh.vercel.app)
+**Website:** [Open WorkFlow EMS](https://ems-sparsh.vercel.app)
 
 
-    You can explore the application using the public demo credentials below. No registration is required.
+You can explore the application using the public demo credentials below. No registration is required.
 
-    ## Demo Login Credentials
+## Demo Login Credentials
 
-    ### Admin account
+### Admin account
 
-    | Email | Password |
-    |---|---|
-    | `admin0@me.com` | `admin0` |
+| Email | Password |
+|---|---|
+| `admin0@me.com` | `admin0` |
 
-    ### Employee accounts
+### Employee accounts
 
-    | Employee | Email | Password |
-    |---|---|---|
-    | John Doe | `employee5@gmail.com` | `emp5` |
-    | Alex Johnson | `employee1@gmail.com` | `emp1` |
-    | Michael Smith | `employee2@gmail.com` | `emp2` |
+| Employee | Email | Password |
+|---|---|---|
+| John Doe | `employee5@gmail.com` | `emp5` |
+| Alex Johnson | `employee1@gmail.com` | `emp1` |
+| Michael Smith | `employee2@gmail.com` | `emp2` |
 
-    **How to log in:** Open the live website, enter any one of the email/password combinations above, and select the corresponding dashboard. Use an Admin account to manage tasks or an Employee account to work on assigned tasks.
+**How to log in:** Open the live website, enter any one of the email/password combinations above, and select the corresponding dashboard. Use an Admin account to manage tasks or an Employee account to work on assigned tasks.
 
-    These are intentionally public demo credentials. They are stored in the frontend source code and are **not real or secure accounts**. Please do not enter personal, confidential, or sensitive information into this demo.
+These are intentionally public demo credentials. They are stored in the frontend source code and are **not real or secure accounts**. Please do not enter personal, confidential, or sensitive information into this demo.
 
-    ## Features
+## Features
 
-    ### Admin dashboard
+### Admin dashboard
 
-    - View an overview of tasks, employees, pending reviews, and completed tasks.
-    - View tasks assigned across the team.
-    - Filter tasks by status: All, Active, Submitted, Accepted, and Rejected.
-    - Assign a new task to an employee.
-    - Set a task title, description, assignment date, deadline, category, and priority.
-    - Review submitted tasks and accept or reject them.
-    - Log out of the Admin dashboard.
+- View an overview of tasks, employees, pending reviews, and completed tasks.
+- View tasks assigned across the team.
+- Filter tasks by status: All, Active, Submitted, Accepted, and Rejected.
+- Assign a new task to an employee.
+- Set a task title, description, assignment date, deadline, category, and priority.
+- Review submitted tasks and accept or reject them.
+- Log out of the Admin dashboard.
 
-    ### Employee dashboard
+### Employee dashboard
 
-    - View a personal task overview with Active, Submitted, Accepted, and Rejected counts.
-    - View tasks assigned to the logged-in employee.
-    - Filter tasks by status.
-    - Submit an active task for Admin review.
-    - Cancel a submission while it is awaiting review.
-    - View whether a task has been accepted or rejected.
-    - Log out of the Employee dashboard.
+- View a personal task overview with Active, Submitted, Accepted, and Rejected counts.
+- View tasks assigned to the logged-in employee.
+- Filter tasks by status.
+- Submit an active task for Admin review.
+- Cancel a submission while it is awaiting review.
+- View whether a task has been accepted or rejected.
+- Log out of the Employee dashboard.
 
-    ## Task Workflow
+## Task Workflow
 
-    1. An Admin assigns a task to an employee.
-    2. The task appears in that employee's dashboard with its details, priority, assignment date, and deadline.
-    3. The Employee completes the task and selects **Submit Task**.
-    4. The task moves to **Submitted** and appears in the Admin's pending reviews.
-    5. The Admin reviews the submission and either accepts or rejects it.
-    6. The updated status is reflected in the employee's task list.
+1. An Admin assigns a task to an employee.
+2. The task appears in that employee's dashboard with its details, priority, assignment date, and deadline.
+3. The Employee completes the task and selects **Submit Task**.
+4. The task moves to **Submitted** and appears in the Admin's pending reviews.
+5. The Admin reviews the submission and either accepts or rejects it.
+6. The updated status is reflected in the employee's task list.
 
-    ## Tech Stack
+![alt text](image.png)
 
-    - **React** — component-based user interface
-    - **Vite** — development server and build tool
-    - **React Router DOM** — client-side routing between login and role-based dashboards
-    - **Tailwind CSS** — styling and responsive layouts
-    - **Browser Local Storage** — demo credentials, task data, and selected login session
+## Tech Stack
 
-    ## Run Locally
+- **React** — component-based user interface
+- **Vite** — development server and build tool
+- **React Router DOM** — client-side routing between login and role-based dashboards
+- **Tailwind CSS** — styling and responsive layouts
+- **Browser Local Storage** — demo credentials, task data, and selected login session
 
-    ### Prerequisites
+## Run Locally
 
-    - [Node.js](https://nodejs.org/) (which includes npm)
-    - Git
+### Prerequisites
 
-    ### Installation
+- [Node.js](https://nodejs.org/) (which includes npm)
+- Git
 
-    1. Clone the repository:
+### Installation
 
-    ```bash
-    git clone https://github.com/sparsh34agarwal-commits/Employee_Management_System.git
-    ```
+1. Clone the repository:
 
-    2. Move into the project directory:
+```bash
+git clone https://github.com/sparsh34agarwal-commits/Employee_Management_System.git
+```
 
-    ```bash
-    cd Employee_Management_System
-    ```
+2. Move into the project directory:
 
-    3. Install dependencies:
+```bash
+cd Employee_Management_System
+```
 
-    ```bash
-    npm install
-    ```
+3. Install dependencies:
 
-    4. Start the development server:
+```bash
+npm install
+```
 
-    ```bash
-    npm run dev
-    ```
+4. Start the development server:
 
-    5. Open the local URL printed in your terminal (Vite usually uses `http://localhost:5173`).
+```bash
+npm run dev
+```
 
-    ### Production build
+5. Open the local URL printed in your terminal (Vite usually uses `http://localhost:5173`).
 
-    To create a production build:
+### Production build
 
-    ```bash
-    npm run build
-    ```
+To create a production build:
 
-    To preview the production build locally:
+```bash
+npm run build
+```
 
-    ```bash
-    npm run preview
-    ```
+To preview the production build locally:
 
-    ## Important Notes About This Demo
+```bash
+npm run preview
+```
 
-    - **No backend or database is connected yet.** The application currently uses browser Local Storage to keep its demo data.
-    - **Data is browser-specific.** Changes made by one visitor are not synced to another visitor's browser or device. Opening the site in a different browser or browser profile starts with its own demo data.
-    - **Shared browser state:** People using the same browser profile on the same website share that browser's saved demo data. For example, an Admin's task assignments or review decisions may still be visible when someone logs in as an Employee in that same browser.
-    - **Changes persist locally.** Refreshing the page does not normally reset task changes. To restore the original sample data, clear this website's Local Storage/site data in your browser and reload the page. The app will seed the sample accounts and tasks again.
-    - **Demo authentication only.** Login checks credentials stored in the frontend. This is suitable for demonstrating the UI and workflow, but it is not production-grade authentication or authorization. Do not reuse these credentials elsewhere.
+## Important Notes About This Demo
 
-    A backend, database, and proper authentication/authorization can be added in a future version to support shared data and real user accounts.
+- **No backend or database is connected yet.** The application currently uses browser Local Storage to keep its demo data.
+- **Data is browser-specific.** Changes made by one visitor are not synced to another visitor's browser or device. Opening the site in a different browser or browser profile starts with its own demo data.
+- **Shared browser state:** People using the same browser profile on the same website share that browser's saved demo data. For example, an Admin's task assignments or review decisions may still be visible when someone logs in as an Employee in that same browser.
+- **Changes persist locally.** Refreshing the page does not normally reset task changes. To restore the original sample data, clear this website's Local Storage/site data in your browser and reload the page. The app will seed the sample accounts and tasks again.
+- **Demo authentication only.** Login checks credentials stored in the frontend. This is suitable for demonstrating the UI and workflow, but it is not production-grade authentication or authorization. Do not reuse these credentials elsewhere.
 
-    ## Repository
+A backend, database, and proper authentication/authorization can be added in a future version to support shared data and real user accounts.
 
-    [GitHub — Employee Management System](https://github.com/sparsh34agarwal-commits/Employee_Management_System)
+## Repository
 
-    ---
+[GitHub — Employee Management System](https://github.com/sparsh34agarwal-commits/Employee_Management_System)
 
-    Built as a learning project to practice React, routing, state management, and browser-based data persistence.
+---
+
+Built as a learning project to practice React, routing, state management, and browser-based data persistence.
