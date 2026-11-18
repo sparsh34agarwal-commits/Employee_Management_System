@@ -21,9 +21,9 @@ You can explore the application using the public demo credentials below. No regi
 
 | Employee | Email | Password |
 |---|---|---|
-| John Doe | `employee5@gmail.com` | `emp5` |
-| Alex Johnson | `employee1@gmail.com` | `emp1` |
-| Michael Smith | `employee2@gmail.com` | `emp2` |
+| Keshav Kumar | `employee5@gmail.com` | `emp5` |
+| Naman Gupta | `employee1@gmail.com` | `emp1` |
+| Pooja Verma | `employee2@gmail.com` | `emp2` |
 
 **How to log in:** Open the live website, enter any one of the email/password combinations above, and select the corresponding dashboard. Use an Admin account to manage tasks or an Employee account to work on assigned tasks.
 
