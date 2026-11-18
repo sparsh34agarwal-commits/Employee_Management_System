@@ -28,11 +28,6 @@ const IconBarChart = () => (
     <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
   </svg>
 );
-const IconShield = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  </svg>
-);
 
 const Login_page = ({handlelogin}) => {
 
@@ -188,8 +183,20 @@ const Login_page = ({handlelogin}) => {
 
             {/* Remember */}
             <div className="flex justify-between items-center">
-              <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-500">
-                <div className="w-4 h-4 rounded border border-slate-300 bg-white" />
+              <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-600 select-none">
+                <div className="w-4 h-4 rounded bg-blue-700 flex items-center justify-center text-white shrink-0">
+                  <svg
+                    className="w-2.5 h-2.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </div>
                 Remember me
               </label>
             </div>
@@ -202,21 +209,6 @@ const Login_page = ({handlelogin}) => {
               Sign In
             </button>
           </form>
-
-          {/* Divider */}
-          <div className="flex items-center gap-4 my-5">
-            <div className="flex-1 h-px bg-slate-200" />
-            <span className="text-xs text-slate-400 uppercase tracking-widest">
-              or
-            </span>
-            <div className="flex-1 h-px bg-slate-200" />
-          </div>
-
-          {/* Admin login */}
-          <button className="w-full py-3 rounded-xl border border-slate-200 bg-white text-slate-600 text-sm font-medium cursor-pointer transition-all duration-200 flex items-center justify-center gap-2 hover:bg-slate-50 hover:border-slate-300 shadow-sm">
-            <IconShield />
-            Login as Admin
-          </button>
 
           <p className="text-center text-xs text-slate-400 mt-6 sm:mt-7">
             Secured by <span className="text-blue-600 font-semibold">WorkFlow EMS</span> Enterprise

@@ -2,7 +2,7 @@
 const creds = [
   {
     id: 0,
-    name: "John Doe",
+    name: "Keshav Kumar",
     email: "employee5@gmail.com",
     password: "emp5",
     role: "employee",
@@ -43,7 +43,7 @@ const creds = [
 
   {
     id: 1,
-    name: "Alex Johnson",
+    name: "Naman Gupta",
     email: "employee1@gmail.com",
     password: "emp1",
     role: "employee",
@@ -84,7 +84,7 @@ const creds = [
 
   {
     id: 2,
-    name: "Michael Smith",
+    name: "Pooja Verma",
     email: "employee2@gmail.com",
     password: "emp2",
     role: "employee",
